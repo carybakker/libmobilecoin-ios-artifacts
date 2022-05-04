@@ -202,7 +202,7 @@ public struct ConsensusCommon_LastBlockInfoResponse {
   public var mobMinimumFee: UInt64 = 0
 
   /// A map of token id -> minimum fee
-  public var minimumFees: Dictionary<UInt32,UInt64> = [:]
+  public var minimumFees: Dictionary<UInt64,UInt64> = [:]
 
   /// Current network_block version, appropriate for new transactions.
   ///
@@ -267,14 +267,6 @@ public struct ConsensusCommon_ProposeTxResponse {
   public init() {}
 }
 
-#if swift(>=5.5) && canImport(_Concurrency)
-extension ConsensusCommon_ProposeTxResult: @unchecked Sendable {}
-extension ConsensusCommon_LastBlockInfoResponse: @unchecked Sendable {}
-extension ConsensusCommon_BlocksRequest: @unchecked Sendable {}
-extension ConsensusCommon_BlocksResponse: @unchecked Sendable {}
-extension ConsensusCommon_ProposeTxResponse: @unchecked Sendable {}
-#endif  // swift(>=5.5) && canImport(_Concurrency)
-
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "consensus_common"
@@ -334,7 +326,7 @@ extension ConsensusCommon_LastBlockInfoResponse: SwiftProtobuf.Message, SwiftPro
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularUInt64Field(value: &self.index) }()
       case 2: try { try decoder.decodeSingularUInt64Field(value: &self.mobMinimumFee) }()
-      case 3: try { try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt32,SwiftProtobuf.ProtobufUInt64>.self, value: &self.minimumFees) }()
+      case 3: try { try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt64,SwiftProtobuf.ProtobufUInt64>.self, value: &self.minimumFees) }()
       case 4: try { try decoder.decodeSingularUInt32Field(value: &self.networkBlockVersion) }()
       default: break
       }
@@ -349,7 +341,7 @@ extension ConsensusCommon_LastBlockInfoResponse: SwiftProtobuf.Message, SwiftPro
       try visitor.visitSingularUInt64Field(value: self.mobMinimumFee, fieldNumber: 2)
     }
     if !self.minimumFees.isEmpty {
-      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt32,SwiftProtobuf.ProtobufUInt64>.self, value: self.minimumFees, fieldNumber: 3)
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt64,SwiftProtobuf.ProtobufUInt64>.self, value: self.minimumFees, fieldNumber: 3)
     }
     if self.networkBlockVersion != 0 {
       try visitor.visitSingularUInt32Field(value: self.networkBlockVersion, fieldNumber: 4)
