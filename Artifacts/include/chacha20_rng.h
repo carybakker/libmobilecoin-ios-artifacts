@@ -50,7 +50,7 @@ MC_ATTRIBUTE_NONNULL(1);
 /// # Arguments
 ///
 /// * `chacha20_rng` - must be a valid ChaCha20Rng
-/// * `out_word_pos` - pointer to buffer of 128 bytes where the current
+/// * `out_word_pos` - pointer to buffer of 16 bytes where the current
 ///   chacha20_rng wordpos will be returned
 ///
 /// # Errors
@@ -105,13 +105,9 @@ MC_ATTRIBUTE_NONNULL(1);
 /// # Arguments
 ///
 /// * `chacha20_rng` - must be a valid ChaCha20Rng
-///
-/// * `chacha20_rng` - must be a valid ChaCha20Rng
-bool mc_chacha20_rng_free(
-    ChaCha20Rng* MC_NONNULL chacha20_rng,
-    McError* MC_NULLABLE * MC_NULLABLE out_error
-)
-MC_ATTRIBUTE_NONNULL(1);
+void mc_chacha20_rng_free(
+    ChaCha20Rng* MC_NULLABLE chacha20_rng
+);
 
 #ifdef __cplusplus
 }
